@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %}customer{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h1>Add a new loan</h1>
+<p class="important">
+<div class="card">
+    <form action="/add_loan/" method="post">
+        <label for="customer_id">Customer ID:</label>
+        <input type="text" name="customer_id" required="true"><br><br>
+
+        <label for="book_id">Book Id:</label>
+        <input type="number" name="book_id" required="true"><br><br>
+
+
+        <label for="loan_date">loan date:</label>
+        <input type="date" name="loan_date" required="true"><br><br>
+
+
+        <label for="return_date">Return date:</label>
+        <input type="date" name="return_date"> <br><br>
+
+
+        <input class="btn btn-primary" type="submit" value="Submit">
+
+    </form>
+
+
+
+</div>
+
+
+
+{% endblock %}

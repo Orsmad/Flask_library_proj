@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}customer{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h1>Return a book</h1>
+<p class="important">
+    <!-- return a book form -->
+<form method="post">
+
+
+    <label for="return_date">Return date:</label>
+    <input type="date" name="return_date"><br><br>
+
+
+    <input class="btn btn-primary" type="submit" value="Submit">
+
+</form>
+
+{% endblock %}

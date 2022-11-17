@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}Customers {% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+
+<!-- search customer form -->
+<form action="/search_customer/" method="post">
+
+  <label for="name">customer name:</label>
+  <input type="text" name="name" required="true">
+
+  <input type="submit" class="btn btn-primary" value="Search">
+
+</form>
+
+
+
+<h1>Customers</h1>
+<p class="important">
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {%- for customer in customers %}
+  <div class="col">
+    <div class="card">
+      <img src="\static\customer.jpg" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">ID: {{ customer.id}}</h5>
+        <p class="card-text">Name: {{ customer.name}}</p>
+        <p class="card-text">City: {{ customer.city}}</p>
+        <p class="card-text">Age: {{ customer.age}}</p>
+        <a class="btn btn-success" href="/add_customer">Add</a>
+        <a class="btn" href="/all_customers/{{customer.id}}">show customer</a>
+        <a class="btn btn-danger" href="/delete_customer/{{customer.id}}">delete customer</a>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock %}

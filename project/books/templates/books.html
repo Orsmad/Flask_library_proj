@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}books {% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+
+<h1>Books</h1>
+
+<form action="/search_book/" method="post">
+
+  <label for="name">Book name:</label>
+  <input type="text" name="name" required="true">
+
+  <input class="btn btn-primary" type="submit" value="Search">
+
+</form>
+
+<p class="important">
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {%- for book in books %}
+  <div class="col">
+    <div class="card">
+      <img src="\static\book.jpg" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">ID: {{ book.id}}</h5>
+        <p class="card-text">Name: {{ book.name}}</p>
+        <p class="card-text">Author: {{ book.author}}</p>
+        <p class="card-text">Year published: {{ book.year_published}}</p>
+        <p class="card-text">Type: {{ book.type}}</p>
+        <a class="btn btn-success" href="/add_book/">Add</a>
+        <a class="btn"  href="/all_books/{{book.id}}">show Book</a>
+        <a class="btn btn-danger" href="/delete_book/{{book.id}}">delete Book</a>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock %}

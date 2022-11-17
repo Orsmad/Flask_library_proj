@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %} loans {% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+
+<h1>Loans</h1>
+<p class="important">
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {%- for loan in loans %}
+  <div class="col">
+    <div class="card">
+      <img src="\static\books.jpg" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">ID: {{ loan.id}}</h5>
+        <p class="card-text">Customer name: {{ loan.customers.name}}</p>
+        <p class="card-text">Book name: {{ loan.books.name}}</p>
+        <p class="card-text">loan date: {{ loan.loan_date}}</p>
+        <p class="card-text">Return day: {{ loan.return_date}}</p>
+
+        <a class="btn btn-success" href="/add_loan/">Add</a>
+        <!-- if book wasnt returned shows a return btn -->
+        {% if loan.return_date is none %}
+        <a class="btn" href="/return_book/{{ loan.id}}">Return Book</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock %}

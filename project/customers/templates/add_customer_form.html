@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}customer{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h1>Add a new Customer</h1>
+<p class="important">
+<div class="card">
+  <form action="/add_customer/" method="post">
+    <label for="name">Customer name:</label>
+    <input type="text" name="name" required="true"><br><br>
+
+    <label for="city">City name:</label>
+    <input type="text" name="city" required="true"><br><br>
+
+    <label for="age">Age: </label>
+    <input type="number" name="age" required="true"><br><br>
+
+
+    <input type="submit" class="btn btn-primary" value="Submit">
+
+  </form>
+
+</div>
+
+
+{% endblock %}
